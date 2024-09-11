@@ -1,0 +1,21 @@
+.active {
+  color: var(--accent);
+}
+
+.navigation {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  justify-content: center;
+}
+
+.navigation-item a {
+  text-decoration: none;
+  font-size: var(--fs-md);
+}
+
+.navigation-item {
+  a:hover {
+    color: var(--accent);
+  }
+}

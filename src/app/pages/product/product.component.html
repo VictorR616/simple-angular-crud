@@ -1,0 +1,30 @@
+<main class="content-grid">
+  <h1>Products</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of productList; track $index) {
+          <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description }}</td>
+          <td>
+            <a routerLink="/products/{{ product.id }}">View</a>
+          </td>
+        </tr>
+      }
+      
+    </tbody>
+  </table>
+
+</main>

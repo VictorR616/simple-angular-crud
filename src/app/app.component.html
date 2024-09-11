@@ -1,0 +1,32 @@
+<header>
+  <nav>
+    <ul class="navigation">
+      <li class="navigation-item">
+        <a
+          routerLink=""
+          [ngClass]="{ active: menuOption == 'home' }"
+          (click)="onOption('home')"
+          >Home</a
+        >
+      </li>
+      <li class="navigation-item">
+        <a
+          routerLink="products"
+          [ngClass]="{ active: menuOption == 'products' }"
+          (click)="onOption('products')"
+          >Products</a
+        >
+      </li>
+      <li class="navigation-item">
+        <a
+          routerLink="contact"
+          [ngClass]="{ active: menuOption == 'contact' }"
+          (click)="onOption('contact')"
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<router-outlet />

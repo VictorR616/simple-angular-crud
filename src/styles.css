@@ -1,0 +1,121 @@
+:root {
+  --font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+
+  --text: #071313;
+  --background: #f0fafa;
+  --accent: #60d2d0;
+
+  --fs-xl: clamp(1.5rem, 2vw, 2rem);
+  --fs-lg: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+  --fs-md: clamp(1rem, 1vw, 1.15rem);
+  --fs-sm: clamp(0.875rem, 0.75vw, 0.875rem);
+  --fs-xs: clamp(0.75rem, 0.5vw, 0.75rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #ebebeb;
+    --background: #050f0f;
+    --accent: #2d9f9d;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark light;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+  font-family: var(--font-family);
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+img {
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+
+main,
+section,
+article,
+aside,
+nav,
+footer,
+header {
+  margin-block: 2rem;
+}
+
+.content-grid {
+  --padding-inline: 1rem;
+  --content-max-width: 90ch;
+  --breakout-max-width: 120ch;
+
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(
+      100% - (var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: inherit;
+}
